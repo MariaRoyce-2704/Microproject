@@ -26,6 +26,7 @@ void read()
     for (int i=0;i<eventCount;i++) 
     {
         fgets(events[i].name,100,fp);
+        events[i].name[strcspn(events[i].name, "\n")] = 0;
         fscanf(fp,"%lf\n%lf\n",&events[i].target,&events[i].fund);
     }
     fclose(fp);
@@ -121,7 +122,7 @@ void viewProgress()
             {
                 printf("Progress: %.2f%%\n",(events[i].fund / events[i].target) * 100);
              }
-             printf("******************************************************************");
+             printf("******************************************************************\n");
     }
     
     
@@ -167,4 +168,3 @@ int main()
     
     return 0;
 }
-
